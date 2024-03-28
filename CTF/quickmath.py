@@ -1,3 +1,7 @@
+# this hosts a server that will serve math questions over a raw TCP socket on 127.0.0.1 requiring answers in under a second to the second decimal place.
+
+# it is a lot more fun if you don't read the server code before attempting.
+
 import threading
 import random
 import socket
@@ -11,7 +15,7 @@ color_BLU = '\033[94m'
 color_PURP = '\033[35m'
 color_reset = '\033[0m'
 
-SERVER = 'IP'
+SERVER = '127.0.0.1'
 PORT = 1337
 ADDR = (SERVER, PORT)
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
