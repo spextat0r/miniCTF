@@ -43,7 +43,7 @@ You can request the code by sending give_code as the username
 
 code = """
 def handle_client(conn, addr):
-    print("\n" + color_BLU + f"[NEW CONNECTION] {addr} connected.\n" + color_reset)
+    print("\\n" + color_BLU + f"[NEW CONNECTION] {addr} connected.\\n" + color_reset)
 
     conn.send(logo.encode())
 
@@ -54,48 +54,48 @@ def handle_client(conn, addr):
                 cred_data = f.read()
                 f.close()
 
-            cred_data = cred_data.replace('\n', '')
+            cred_data = cred_data.replace('\\n', '')
 
             username = cred_data.split(':')[0]
             password = cred_data.split(':')[1]
 
             conn.send('username: '.encode())
             given_username = conn.recv(8192).decode()
-            if given_username.endswith('\n'):
-                given_username = given_username[:given_username.rfind('\n')]
+            if given_username.endswith('\\n'):
+                given_username = given_username[:given_username.rfind('\\n')]
 
-            print('{}: Gave a username of: "{}"'.format(addr[0].replace('\'', ''), given_username))
+            print('{}: Gave a username of: "{}"'.format(addr[0].replace('\\'', ''), given_username))
 
             if given_username == 'give_code':
                 conn.send(code.encode())
                 continue
 
-            if eval('\'{}\' == \'{}\''.format(username, given_username)):
+            if eval('\\'{}\\' == \\'{}\\''.format(username, given_username)):
                 conn.send('password: '.encode())
 
                 given_password = conn.recv(8192).decode()
 
-                if given_password.endswith('\n'):
-                    given_password = given_password[:given_password.rfind('\n')]
+                if given_password.endswith('\\n'):
+                    given_password = given_password[:given_password.rfind('\\n')]
 
-                print('{}: Gave a password of: "{}"'.format(addr[0].replace('\'', ''), given_password))
+                print('{}: Gave a password of: "{}"'.format(addr[0].replace('\\'', ''), given_password))
 
-                if eval('\'{}\' == \'{}\''.format(password, given_password)):
-                    conn.send('Successfully loggedin!\n'.encode())
-                    conn.send('Heres your flag: noFlag5U\n'.encode())
+                if eval('\\'{}\\' == \\'{}\\''.format(password, given_password)):
+                    conn.send('Successfully loggedin!\\n'.encode())
+                    conn.send('Heres your flag: noFlag5U\\n'.encode())
                     conn.close()
                     return
                 else:
-                    conn.send('Invalid Password\n'.encode())
+                    conn.send('Invalid Password\\n'.encode())
                     continue
             else:
-                conn.send('Invalid Username\n'.encode())
+                conn.send('Invalid Username\\n'.encode())
                 continue
 
         except Exception as e:
             print(str(e))
             import traceback
-            conn.send('What did you just send me?????\n'.encode())
+            conn.send('What did you just send me?????\\n'.encode())
             conn.send(traceback.format_exc().encode())
             conn.close()
             return
