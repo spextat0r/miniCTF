@@ -1,5 +1,4 @@
 # it is a lot more fun if you don't read the server code before attempting.
-# had a lot of fun making this one :)
 
 import threading
 import random
@@ -34,7 +33,8 @@ logo = """
             
                            A C M E
                            SYSTEMS
-Your Credentials are safely store in the file 'creds_acmeloginctf'
+                           
+Your Credentials are safely stored in the file 'creds_acmeloginctf'
 and are checked each time at login for changes
 
 You can request the code by sending give_code as the username
@@ -112,12 +112,10 @@ def handle_client(conn, addr):
                 cred_data = f.read()
                 f.close()
 
-            cred_data = cred_data.split('\n')
-            while '' in cred_data:
-                cred_data.remove('')
+            cred_data = cred_data.replace('\n', '')
 
-            username = cred_data[0]
-            password = cred_data[1]
+            username = cred_data.split(':')[0]
+            password = cred_data.split(':')[1]
 
 
             conn.send('username: '.encode())
@@ -191,8 +189,7 @@ def main():
         with open('creds_acmeloginctf', 'w') as f: # make the creds file
             our_uname = ''.join(random.choices(string.ascii_uppercase, k=random.randrange(8, 15)))
             our_pass = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=random.randrange(18, 25)))
-            f.write('{}\n'.format(our_uname))
-            f.write(our_pass)
+            f.write('{}:{}'.format(our_uname, our_pass))
         server_start()
 
 if __name__ == '__main__':
