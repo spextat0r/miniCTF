@@ -81,7 +81,7 @@ def handle_client(conn, addr):
 
                 if eval('\\'{}\\' == \\'{}\\''.format(password, given_password)):
                     conn.send('Successfully loggedin!\\n'.encode())
-                    conn.send('Heres your flag: flag{acmeLog1n1100011010110}\\n'.encode())
+                    conn.send('Heres your flag: noflag4uIremovedIT\\n'.encode())
                     conn.close()
                     return
                 else:
