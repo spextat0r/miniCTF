@@ -6,5 +6,7 @@ All CTFs and solutions are meant to run on 127.0.0.1 (localhost) if you want oth
 
 SOME OF THESE CTFs ARE LITERAL VULNERABILITIES ONLY RUN ON SECURE NETWORKS OR ON 127.0.0.1
 
+YOU ARE RESPONSIBLE for any damage that comes from these scripts should you choose to run them.
+
 ## Getting Started
 Just download the repo so far each ctf only uses default libraries within python3 at least the ones that come with Kali and run whatever ctf script you want. Most scripts are connected to with ```netcat 127.0.0.1 1337```
