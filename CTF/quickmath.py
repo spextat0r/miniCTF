@@ -21,7 +21,6 @@ ADDR = (SERVER, PORT)
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
 
-
 def handle_client(conn, addr):
     print("\n" + color_BLU + f"[NEW CONNECTION] {addr} connected.\n" + color_reset)
     conn.send('Welcome to the math challenge. You need to answer my 25 math questions rounded to the second decimal place if the answer is not a whole number really quick ok\n'.encode())
