@@ -47,7 +47,7 @@ def handle_client(conn, addr):
 
         start_time = time.time() # get the time right as we send the question
 
-        conn.send(problem.encode()) # send it
+        conn.send(problem.encode() + '='.encode()) # send it
         client_ans = conn.recv(2048).decode() # get their response
 
         elapsed_time = time.time() - start_time  # get the time again
