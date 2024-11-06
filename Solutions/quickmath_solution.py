@@ -6,4 +6,4 @@ client_socket = socket.socket()
 client_socket.connect(('127.0.0.1', 1337))
 client_socket.recv(len('Welcome to the math challenge. You need to answer my 25 math questions rounded to the second decimal place if the answer is not a whole number really quick ok\n'))
 while True:
-    client_socket.send(str(round(eval(client_socket.recv(2048).decode()), 2)).encode())
+    client_socket.send(str(round(eval(client_socket.recv(2048).decode().replace('=','')), 2)).encode())
